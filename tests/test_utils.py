@@ -19,3 +19,8 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(stack.top.data, "data5")
         self.assertEqual(stack.top.top.top.top, node2)
         self.assertEqual(stack.top.top.top.top.top.data, "data1")
+
+    def test_stack_pop(self):
+        stack.push("data6")
+        self.assertEqual(stack.pop(), 'data6')
+        self.assertEqual(stack.top.data, 'data5')
