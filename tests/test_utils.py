@@ -1,6 +1,7 @@
 import unittest
 
 from module_datastruct.utils import Node, Stack
+from module_datastruct.custom_queue import Queue
 
 node1 = Node("data1")
 node2 = Node('data2', node1)
@@ -24,3 +25,13 @@ class TestUtils(unittest.TestCase):
         stack.push("data6")
         self.assertEqual(stack.pop(), 'data6')
         self.assertEqual(stack.top.data, 'data5')
+
+    def test_enqueue(self):
+        queue = Queue()
+        queue.enqueue("data1")
+        self.assertEqual(queue.head.data, "data1")
+        self.assertEqual(queue.tail.data, "data1")
+        queue.enqueue("data2")
+        self.assertEqual(queue.head.data, "data1")
+        self.assertEqual(queue.head.next_node.data, "data2")
+
