@@ -45,10 +45,24 @@ class LinkedList:
         print(ll_string)
         return ll_string
 
+    def to_list(self):
+        """ Возвращает список с данными, содержащимися в односвязном списке LinkedList."""
+        ll_list = []
+        node = self.head
+        if node is None:
+            return None
+        while node:
+            ll_list.append(node.data)
+            node = node.next_node
+        return ll_list
 
-ll = LinkedList()
-ll.insert_beginning({'id': 1})
-ll.insert_at_end({'id': 2})
-ll.insert_at_end({'id': 3})
-ll.insert_beginning({'id': 0})
-ll.print_ll()
+    def get_data_by_id(self, item_id):
+        """ Возвращает первый найденный в LinkedList словарь с ключом id,
+        значение которого равно переданному в метод значению."""
+        item_list = self.to_list()
+        for item in item_list:
+            try:
+                if item["id"] == item_id:
+                    return item
+            except TypeError:
+                print("Данные не являются словарем или в словаре нет id.")
